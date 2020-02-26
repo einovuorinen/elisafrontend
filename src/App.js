@@ -1,42 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Navbar, NavbarToggler, NavbarText } from 'reactstrap'
 import axios from 'axios'
-
-const SearchForm = (props) => {
-  return(
-    <div  className='belowNav'>
-    Search for a program
-    <form onSubmit={props.search} className='searchForm'>
-      channel: 
-        <select onChange={props.getResultsbyChannel}>
-          {props.channelData.map(channel => <option value={channel.id}>{channel.name}</option>)}
-        </select>
-      date: <input type='date'
-        	value={props.date}
-        	onChange={props.getResultsByDate}
-    	/>
-      <button type="submit">Search</button>
-    </form>
-    </div>
-  )
-}
-
-const Display = (props) => {
-  const f = props.filter.toLowerCase()
-  return (
-	  <table className='table'>
-        {props.displayData.filter(item => (item.name && item.name.toLowerCase().includes(f)) || (item.description && item.description.toLowerCase().includes(f)))
-          .map(item => {
-            return (
-              <tr key={item.id}>
-                <td className='firstColumn'>{item.name}</td>
-                <td>{item.rightColumn}</td>
-                <td><FavoriteButton favorite={props.favorite} favorites={props.favorites} type={item.type} id={item.id}/></td>
-              </tr>)}
-          )}
-            </table>
-	)
-}
+import SearchForm from /components/SearchForm
+import Display from /components/Display
 
 const FavoriteButton = (props) => {
   if (!props.favorites.find(x => x.id === props.id)) {
