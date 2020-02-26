@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Navbar, NavbarToggler, NavbarText } from 'reactstrap'
 import axios from 'axios'
-import SearchForm from /components/SearchForm
-import Display from /components/Display
-
-const FavoriteButton = (props) => {
-  if (!props.favorites.find(x => x.id === props.id)) {
-    return <button className='favoriteButton' onClick={() => props.favorite(props.id, props.type)}>Favorite</button>
-  } else {
-    return <button className='favoriteButton' onClick={() => props.favorite(props.id, props.type)}>Remove from Favorites</button>
-  }
-}
+import SearchForm from './components/SearchForm'
+import Display from './components/Display'
 
 const Filter = (props) => {
 	return (
@@ -91,7 +83,6 @@ const App = () => {
       .then(response => {
         setLivePrograms(response.data)
       })
-    console.log(livePrograms)
   }
   
   useEffect(hook, [])

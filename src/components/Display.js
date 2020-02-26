@@ -1,4 +1,5 @@
 import React from 'react'
+import FavoriteButton from './Favoritebutton'
 
 const Display = (props) => {
     const f = props.filter.toLowerCase()
